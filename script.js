@@ -1,8 +1,4 @@
-const Parse = require('parse/node');
 const axios = require('axios')
-Parse.initialize('ParseTest')
-Parse.masterKey = 'test'
-Parse.serverURL = 'http://localhost:1337/parse';
 (async () => {
   const headers = {
     'X-Parse-Application-Id': 'ParseTest',
