@@ -1,4 +1,4 @@
-const axios = require('axios')
+const axios = require('axios');
 (async () => {
   const headers = {
     'X-Parse-Application-Id': 'ParseTest',
