@@ -2,9 +2,11 @@ import express, {
   Response as ExResponse,
   Request as ExRequest,
   NextFunction,
-} from "express";
-import { createServer } from "http";
-import { ParseServer } from "parse-server";
+} from 'express';
+import { createServer } from 'http';
+import { ParseServer } from 'parse-server';
+// @ts-ignore
+import Config from './../../node_modules/parse-server/lib/Config.js';
 
 // import Parse from "parse/node";
 
@@ -14,10 +16,10 @@ import { ParseServer } from "parse-server";
 // Parse.serverURL = "http://localhost:1337";
 
 const RelatedSchema: Parse.RestSchema = {
-  className: "Related",
+  className: 'Related',
   fields: {
-    users: { type: "Relation", targetClass: "_User" },
-    user: { type: "Pointer", targetClass: "_User", required: false },
+    users: { type: 'Relation', targetClass: '_User' },
+    user: { type: 'Pointer', targetClass: '_User', required: false },
   },
   classLevelPermissions: {
     find: { requiresAuthentication: true },
@@ -27,16 +29,16 @@ const RelatedSchema: Parse.RestSchema = {
     create: {},
     delete: {},
     protectedFields: {
-      "*": ["users"],
+      '*': ['users'],
     },
   },
 };
 
 const api = new ParseServer({
-  databaseURI: "mongodb://localhost:27017/test",
-  cloud: "./build/src/cloud/main.js",
-  appId: "ParseTest",
-  masterKey: "test",
+  databaseURI: 'mongodb://localhost:27017/test',
+  cloud: './build/src/cloud/main.js',
+  appId: 'ParseTest',
+  masterKey: 'test',
   allowClientClassCreation: false,
   preventLoginWithUnverifiedEmail: true,
   enforcePrivateUsers: true,
@@ -72,13 +74,15 @@ const authenticateIfNeeded = async (
      * https://github.com/parse-community/parse-server/issues/6390
      * https://github.com/parse-community/docs/pull/819/files
      */
-    req["userFromJWT"] = parseUser;
+    await parseUser.fetch({ useMasterKey: true });
+    console.log(parseUser.toJSON());
+    req['userFromJWT'] = parseUser;
   }
   return next();
 };
 
 // Serve the Parse API at /parse URL prefix
-app.use("/parse", authenticateIfNeeded, api);
+app.use('/parse', authenticateIfNeeded, api);
 
 app.use(
   express.urlencoded({
@@ -86,16 +90,36 @@ app.use(
   })
 );
 
+const { exec } = require('child_process');
 app.use(express.json());
-
 const port = 1337;
 const httpServer = createServer(app);
 httpServer.listen(port, async function () {
-  console.log("parse-server-example running on port " + port + ".");
-  const related = new Parse.Object('Related');
-  const relation = related.relation('users');
-  const parseUser = new Parse.User();
-  parseUser.id = 'mrgJjOGwfi';
-  relation.add(parseUser);
-  await related.save(null, {useMasterKey: true});
+  console.log('parse-server-example running on port ' + port + '.');
+  try {
+    const config = Config.get('ParseTest');
+    const parseUser = new Parse.User();
+    parseUser.id = 'mrgJjOGwfi';
+    await config.database.create('_User', {
+      className: '_User',
+      objectId: 'mrgJjOGwfi',
+      firstName: 'mockUser',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+    const related = new Parse.Object('Related');
+    const relation = related.relation('users');
+    relation.add(parseUser);
+    await related.save(null, { useMasterKey: true });
+    setTimeout(() => {
+      exec('npm run relation');
+    }, 3000);
+  } catch (e) {
+    console.log(e);
+  }
+});
+process.on('SIGINT', async function () {
+  const config = Config.get('ParseTest');
+  await config.database.deleteEverything(true);
+  process.exit(0);
 });
