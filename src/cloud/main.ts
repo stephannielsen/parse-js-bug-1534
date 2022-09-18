@@ -5,6 +5,7 @@ Parse.Cloud.define(
     // @ts-ignore
     query.equalTo("users", request.user);
     const results = await query.find({ useMasterKey: true });
+    console.log({results});
     return results;
   },
   { requireUser: true }

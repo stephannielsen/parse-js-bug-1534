@@ -6,12 +6,12 @@ import express, {
 import { createServer } from "http";
 import { ParseServer } from "parse-server";
 
-import Parse from "parse/node";
+// import Parse from "parse/node";
 
 //Initialize Parse
-Parse.initialize("ParseTest", "", "TEST_KEY");
+// Parse.initialize("ParseTest", "", "TEST_KEY");
 // @ts-ignore
-Parse.serverURL = "http://localhost:1337";
+// Parse.serverURL = "http://localhost:1337";
 
 const RelatedSchema: Parse.RestSchema = {
   className: "Related",
@@ -33,10 +33,10 @@ const RelatedSchema: Parse.RestSchema = {
 };
 
 const api = new ParseServer({
-  databaseURI: "mongodb://localhost/test",
+  databaseURI: "mongodb://localhost:27017/test",
   cloud: "./build/src/cloud/main.js",
   appId: "ParseTest",
-  masterKey: "TEST_KEY",
+  masterKey: "test",
   allowClientClassCreation: false,
   preventLoginWithUnverifiedEmail: true,
   enforcePrivateUsers: true,
@@ -90,6 +90,12 @@ app.use(express.json());
 
 const port = 1337;
 const httpServer = createServer(app);
-httpServer.listen(port, function () {
+httpServer.listen(port, async function () {
   console.log("parse-server-example running on port " + port + ".");
+  const related = new Parse.Object('Related');
+  const relation = related.relation('users');
+  const parseUser = new Parse.User();
+  parseUser.id = 'mrgJjOGwfi';
+  relation.add(parseUser);
+  await related.save(null, {useMasterKey: true});
 });
