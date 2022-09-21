@@ -2550,10 +2550,10 @@ packet-reader@1.0.0:
   resolved "https://registry.yarnpkg.com/packet-reader/-/packet-reader-1.0.0.tgz#9238e5480dedabacfe1fe3f2771063f164157d74"
   integrity sha512-HAKu/fG3HpHFO0AA8WE8q2g+gBJaZ9MG7fcKk+IJPLTGAD6Psw4443l+9DGRbOIh3/aXr7Phy0TjilYivJo5XQ==
 
-parse-server@5.2.5:
-  version "5.2.5"
-  resolved "https://registry.yarnpkg.com/parse-server/-/parse-server-5.2.5.tgz#ea6ed6abe7038a4c89aa1f67c4628e39aadfaf1c"
-  integrity sha512-CfWgMf+B9o8a/qU9HOk3Yxh0WxxekF1CM9oQDGK9IvTYuJKR8FYCWiSwXKC2K5GmWAvjwfKd5jMNhQdgqChMzw==
+parse-server@5.2.6:
+  version "5.2.6"
+  resolved "https://registry.yarnpkg.com/parse-server/-/parse-server-5.2.6.tgz#26efa10274d3823e7c28d77d00b1aacbfe8cc69b"
+  integrity sha512-Eek/eZHVFt7lQh1QzA7IC/Qbe6JM0+pSoX0WP/j4tAdsUHNkbyQ8ZdMFyXBjLo9PX9ySeuDNVIf9uZ3QmnQR7Q==
   dependencies:
     "@apollo/client" "3.5.8"
     "@apollographql/graphql-playground-html" "1.6.29"
