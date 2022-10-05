@@ -72,7 +72,7 @@ const authenticateIfNeeded = async (
      * https://github.com/parse-community/parse-server/issues/6390
      * https://github.com/parse-community/docs/pull/819/files
      */
-    req["userFromJWT"] = parseUser.toPointer(); // Remove .toPointer() to make this fail with Parse SDK >= 3.4.2
+    req["userFromJWT"] = parseUser; // Add .toPointer() to make this work with Parse SDK >= 3.4.2
   }
   return next();
 };
