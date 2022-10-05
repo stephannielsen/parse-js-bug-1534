@@ -94,14 +94,6 @@
     core-js-pure "^3.15.0"
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime-corejs3@7.17.8":
-  version "7.17.8"
-  resolved "https://registry.yarnpkg.com/@babel/runtime-corejs3/-/runtime-corejs3-7.17.8.tgz#d7dd49fb812f29c61c59126da3792d8740d4e284"
-  integrity sha512-ZbYSUvoSF6dXZmMl/CYTMOvzIFnbGfv4W3SEHYgMvNsFTeLaF2gkGAF4K2ddmtSK4Emej+0aYcnSC6N5dPCXUQ==
-  dependencies:
-    core-js-pure "^3.20.2"
-    regenerator-runtime "^0.13.4"
-
 "@babel/runtime@7.14.6":
   version "7.14.6"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.14.6.tgz#535203bc0892efc7dec60bdc27b2ecf6e409062d"
@@ -113,13 +105,6 @@
   version "7.15.4"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.15.4.tgz#fd17d16bfdf878e6dd02d19753a39fa8a8d9c84a"
   integrity sha512-99catp6bHCaxr4sJ/DbTGgHS4+Rs2RVd2g7iOap6SLGPDknRK9ztKNsE/Fg6QhSeh1FGE5f6gHGQmvvn3I3xhw==
-  dependencies:
-    regenerator-runtime "^0.13.4"
-
-"@babel/runtime@7.18.0":
-  version "7.18.0"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.18.0.tgz#6d77142a19cb6088f0af662af1ada37a604d34ae"
-  integrity sha512-YMQvx/6nKEaucl0MY56mwIG483xk8SDNdlUwb2Ts6FUpr7fm85DxEmsY18LXBNhcTz6tO6JwZV8w1W06v8UKeg==
   dependencies:
     regenerator-runtime "^0.13.4"
 
@@ -955,6 +940,15 @@ aws4@^1.8.0:
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.11.0.tgz#d61f46d83b2519250e2784daf5b09479a8b41c59"
   integrity sha512-xh1Rl34h6Fi1DC2WWKfxUTVqRsNnr6LsKz2+hfwDxQJWmrx8+c7ylaqBMcHfl1U1r2dsifOvKX3LQuLNZ+XSvA==
 
+axios@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-1.0.0.tgz#16ded6096c1d37650db9f6a8d48a2f7c1bb58622"
+  integrity sha512-SsHsGFN1qNPFT5QhSoSD37SHDfGyLSW5AESmyLk2JeCMHv5g0I9g0Hz/zQHx2KNe0jGXh2q2hAm7OdkXm360CA==
+  dependencies:
+    follow-redirects "^1.15.0"
+    form-data "^4.0.0"
+    proxy-from-env "^1.1.0"
+
 backo2@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/backo2/-/backo2-1.0.2.tgz#31ab1ac8b129363463e35b3ebb69f4dfcfba7947"
@@ -1188,7 +1182,7 @@ cookie@0.5.0:
   resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.5.0.tgz#d1f5d71adec6558c58f389987c366aa47e994f8b"
   integrity sha512-YZ3GUyn/o8gfKJlnlX7g7xq4gyO6OSuhGPKaaGssGB2qgDUS0gPgtTvoyZLTt9Ab6dC4hfc9dV5arkvc/OCmrw==
 
-core-js-pure@^3.10.2, core-js-pure@^3.14.0, core-js-pure@^3.15.0, core-js-pure@^3.20.2:
+core-js-pure@^3.10.2, core-js-pure@^3.14.0, core-js-pure@^3.15.0:
   version "3.25.1"
   resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.25.1.tgz#79546518ae87cc362c991d9c2d211f45107991ee"
   integrity sha512-7Fr74bliUDdeJCBMxkkIuQ4xfxn/SwrVg+HkJUAoNEXVqYLv55l6Af0dJ5Lq2YBUW9yKqSkLXaS5SYPK6MGa/A==
@@ -1640,6 +1634,11 @@ follow-redirects@1.14.8:
   version "1.14.8"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.8.tgz#016996fb9a11a100566398b1c6839337d7bfa8fc"
   integrity sha512-1x0S9UVJHsQprFcEC/qnNzBLcIxsjAV905f/UkQxbclCsoTWlacCNOpQa/anodLl2uaEKFhfWOvM2Qg77+15zA==
+
+follow-redirects@^1.15.0:
+  version "1.15.2"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.2.tgz#b460864144ba63f2681096f274c4e57026da2c13"
+  integrity sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==
 
 for-each@^0.3.3:
   version "0.3.3"
@@ -2629,21 +2628,6 @@ parse@3.4.1:
   optionalDependencies:
     crypto-js "4.1.1"
 
-parse@3.4.4:
-  version "3.4.4"
-  resolved "https://registry.yarnpkg.com/parse/-/parse-3.4.4.tgz#6358f2a59df4dfac6f6f76f1589d92942249fd43"
-  integrity sha512-6mnFGD3FroQtCYImRXOFF9+BohGWGwaOIo7htD0HxGVooMR1Iyb69eYj+AoLr+o3sBBGCCGmNmjNjmvUIOnSaw==
-  dependencies:
-    "@babel/runtime" "7.18.0"
-    "@babel/runtime-corejs3" "7.17.8"
-    idb-keyval "6.0.3"
-    react-native-crypto-js "1.0.0"
-    uuid "3.4.0"
-    ws "8.6.0"
-    xmlhttprequest "1.8.0"
-  optionalDependencies:
-    crypto-js "4.1.1"
-
 parseurl@^1.3.2, parseurl@~1.3.3:
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/parseurl/-/parseurl-1.3.3.tgz#9da19e7bee8d12dff0513ed5b76957793bc2e8d4"
@@ -2793,6 +2777,11 @@ proxy-addr@~2.0.7:
   dependencies:
     forwarded "0.2.0"
     ipaddr.js "1.9.1"
+
+proxy-from-env@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/proxy-from-env/-/proxy-from-env-1.1.0.tgz#e102f16ca355424865755d2c9e8ea4f24d58c3e2"
+  integrity sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==
 
 pseudomap@^1.0.1:
   version "1.0.2"
@@ -3570,11 +3559,6 @@ ws@8.2.3:
   version "8.2.3"
   resolved "https://registry.yarnpkg.com/ws/-/ws-8.2.3.tgz#63a56456db1b04367d0b721a0b80cae6d8becbba"
   integrity sha512-wBuoj1BDpC6ZQ1B7DWQBYVLphPWkm8i9Y0/3YdHjHKHiohOJ1ws+3OccDWtH+PoC9DZD5WOTrJvNbWvjS6JWaA==
-
-ws@8.6.0:
-  version "8.6.0"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-8.6.0.tgz#e5e9f1d9e7ff88083d0c0dd8281ea662a42c9c23"
-  integrity sha512-AzmM3aH3gk0aX7/rZLYvjdvZooofDu3fFOzGqcSnQ1tOcTWwhM/o+q++E8mAyVVIyUdajrkzWUGftaVSDLn1bw==
 
 "ws@^5.2.0 || ^6.0.0 || ^7.0.0":
   version "7.5.9"

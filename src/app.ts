@@ -9,7 +9,7 @@ import { ParseServer } from "parse-server";
 import Parse from "parse/node";
 
 //Initialize Parse
-Parse.initialize("ParseTest", "", "TEST_KEY");
+Parse.initialize("ParseTest", "", "test");
 // @ts-ignore
 Parse.serverURL = "http://localhost:1337";
 
@@ -36,7 +36,7 @@ const api = new ParseServer({
   databaseURI: "mongodb://localhost/test",
   cloud: "./build/src/cloud/main.js",
   appId: "ParseTest",
-  masterKey: "TEST_KEY",
+  masterKey: "test",
   allowClientClassCreation: false,
   preventLoginWithUnverifiedEmail: true,
   enforcePrivateUsers: true,
@@ -66,13 +66,13 @@ const authenticateIfNeeded = async (
 ) => {
   if (req.headers.authorization) {
     const parseUser = new Parse.User();
-    parseUser.id = 'mrgJjOGwfi'; // replace with your User ID
+    parseUser.id = req.headers.authorization;
     /**
      * enables parse user from JWT
      * https://github.com/parse-community/parse-server/issues/6390
      * https://github.com/parse-community/docs/pull/819/files
      */
-    req["userFromJWT"] = parseUser;
+    req["userFromJWT"] = parseUser.toPointer(); // Remove .toPointer() to make this fail with Parse SDK >= 3.4.2
   }
   return next();
 };
